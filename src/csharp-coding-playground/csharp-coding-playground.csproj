@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>csharp_coding_playground</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DataStructures\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Algorithms\" />
+  </ItemGroup>
+</Project>

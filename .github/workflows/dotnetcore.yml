@@ -1,0 +1,32 @@
+name: pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.event.head_commit.message, '[CI SKIP] - ')"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: src/csharp-coding-playground
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: src/csharp-coding-playground
+    - name: Test
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../../coverage/lcov.info
+      working-directory: src/csharp-coding-playground.unit-tests
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
