@@ -58,3 +58,7 @@
 ## Algorithms
 ### Binary Search
 - Performs search on a sorted array for a given value. 
+### Merge Sort
+- Performs merge sort on a given array.
+### Quick Sort
+- Performs quick sort on a given array.
