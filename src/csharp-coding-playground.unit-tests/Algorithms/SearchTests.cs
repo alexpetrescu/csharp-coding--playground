@@ -1,5 +1,4 @@
-﻿using System;
-using csharp_coding_playground.Algorithms;
+﻿using csharp_coding_playground.Algorithms;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.Algorithms
