@@ -62,3 +62,5 @@
 - Performs merge sort on a given array.
 ### Quick Sort
 - Performs quick sort on a given array.
+### Heap Sort
+- Performs heap sort on a given array.
