@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/alexpetrescu/csharp-coding-playground/badge.svg?branch=master)](https://coveralls.io/github/alexpetrescu/csharp-coding-playground?branch=master)
 ## Data Structures 
 ### ResizeableArray   
-- [x] Automatically resizing vector
+- [x] Automatically resizing array
 - [x] Length - Returns the number of elements in the array.
 - [x] Capacity  - Returns the number of elements that the array can hold.
 - [x] IsEmpty() - Returns true if the array is empty; false otherwise.
