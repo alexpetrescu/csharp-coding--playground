@@ -61,6 +61,11 @@
 - [x] Remove(T) - Removes value from the tree.
 - [x] BFS() - Performs BFS on the tree.
 - [x] DFS(Strategy) - Performs DFS on the tree with the given strategy.
+- [x] Length - The number of nodes in the tree.
+- [x] Height - Returns the height of the tree. 
+- [x] Successor(T) - Returns highest value after the given value.
+- [x] Min() - Returns the min value of the tree.
+- [x] Max() - Returns the max value of the tree.
 
 ## Algorithms
 ### Binary Search

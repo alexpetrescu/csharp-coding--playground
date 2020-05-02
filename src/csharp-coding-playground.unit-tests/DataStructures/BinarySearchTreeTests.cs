@@ -13,7 +13,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var bst = new BinarySearchTree<int>();
             bst.Insert(7);
 
-            Assert.AreEqual(1, bst.Height());
+            Assert.AreEqual(1, bst.Height);
         }
 
         [Test]
@@ -21,7 +21,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var bst = new BinarySearchTree<int>();
 
-            Assert.AreEqual(0, bst.Height());
+            Assert.AreEqual(0, bst.Height);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Insert(3);
             bst.Insert(2);
 
-            Assert.AreEqual(4, bst.Height());
+            Assert.AreEqual(4, bst.Height);
         }
 
         [Test]
