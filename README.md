@@ -55,6 +55,13 @@
 - [x] Get(K) - Returns the value for the give key.
 - [x] Remove(K) - Removes the given key from the hash table.
 
+### Binary Search Tree
+- [x] Insert(T) - Inserts a new node with the given value in the tree.
+- [x] Search(T) - Searches for the given value in the tree.
+- [x] Remove(T) - Removes value from the tree.
+- [x] BFS() - Performs BFS on the tree.
+- [x] DFS(Strategy) - Performs DFS on the tree with the given strategy.
+
 ## Algorithms
 ### Binary Search
 - Performs search on a sorted array for a given value. 
