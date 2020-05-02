@@ -131,23 +131,18 @@ namespace csharp_coding_playground.DataStructures
                 return;
             }
 
-            if (node.Right != null && node.Left != null)
+
+            (var minParent, var min) = Min(node, node.Right);
+            if (node == root)
             {
-                (var minParent, var min) = Min(node, node.Right);
-                if (node == root)
-                {
-                    root.Value = min.Value;
-                    Remove(minParent, min);
-                }
-                else
-                {
-                    node.Value = min.Value;
-                    Remove(minParent, min);
-                }
-
-                return;
+                root.Value = min.Value;
+                Remove(minParent, min);
             }
-
+            else
+            {
+                node.Value = min.Value;
+                Remove(minParent, min);
+            }
         }
 
         /// <summary>
