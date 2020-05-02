@@ -8,6 +8,37 @@ namespace csharp_coding_playground.unit_tests.DataStructures
     public class BinarySearchTreeTests
     {
         [Test]
+        public void ShouldReturnCorrectHeightWhenOnlyRoot()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+
+            Assert.AreEqual(1, bst.Height());
+        }
+
+        [Test]
+        public void ShouldReturnCorrectHeightWhenBSTIsEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+
+            Assert.AreEqual(0, bst.Height());
+        }
+
+        [Test]
+        public void ShouldReturnCorrectHeightWhenBSTIsNotEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(3);
+            bst.Insert(2);
+
+            Assert.AreEqual(4, bst.Height());
+        }
+
+        [Test]
         public void ShouldReturnMinValueOnMinWhenBSTIsNotEmpty()
         {
             var bst = new BinarySearchTree<int>();

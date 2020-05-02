@@ -17,6 +17,27 @@ namespace csharp_coding_playground.DataStructures
         public int Length { get; private set; } = 0;
 
         /// <summary>
+        /// Returns the height of the tree.
+        /// </summary>
+        /// <returns></returns>
+        public int Height() => Height(root);
+
+        /// <summary>
+        /// Returns the height of the tree from the given node.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        private int Height(BinarySearchTreeNode<T> node)
+        {
+            if (node == null) return 0;
+
+            int lHeight = Height(node.Left);
+            int rHeight = Height(node.Right);
+
+            return Math.Max(lHeight, rHeight) + 1;
+        }
+
+        /// <summary>
         /// Inserts a new node with the given value in the tree.
         /// </summary>
         /// <param name="value"></param>
