@@ -12,10 +12,19 @@ namespace csharp_coding_playground.DataStructures
         private BinarySearchTreeNode<T> root = null;
 
         /// <summary>
+        /// The number of nodes in the tree.
+        /// </summary>
+        public int Length { get; private set; } = 0;
+
+        /// <summary>
         /// Inserts a new node with the given value in the tree.
         /// </summary>
         /// <param name="value"></param>
-        public void Insert(T value) => root = Insert(value, root);
+        public void Insert(T value)
+        {
+            root = Insert(value, root);
+            Length++;
+        }
 
         /// <summary>
         /// Inserts a new node in the tree from the given node.
@@ -75,6 +84,7 @@ namespace csharp_coding_playground.DataStructures
         public void Remove(T value)
         {
             (var parent, var node) = Search(value, null, root);
+            if (node != null) Length--;
             Remove(parent, node);
         }
 

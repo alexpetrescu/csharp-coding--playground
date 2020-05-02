@@ -32,6 +32,14 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         }
 
         [Test]
+        public void ShouldInitializeLengthWithValue0()
+        {
+            var bst = new BinarySearchTree<int>();
+
+            Assert.AreEqual(0, bst.Length);
+        }
+
+        [Test]
         public void ShouldAddElementAtCorrectPositionOnInsert()
         {
             var bst = new BinarySearchTree<int>();
@@ -52,6 +60,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var array = bst.DFS(DFSStrategy.InOrder);
 
             Assert.AreEqual(13, array.Length);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(0, array.ElementAt(0));
             Assert.AreEqual(1, array.ElementAt(1));
             Assert.AreEqual(2, array.ElementAt(2));
@@ -351,11 +360,13 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Insert(7);
 
             var array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(array.Length, 1);
             Assert.AreEqual(7, array.ElementAt(0));
 
             bst.Remove(7);
             array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(array.Length, 0);
         }
 
@@ -371,6 +382,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(4, array.ElementAt(1));
             Assert.AreEqual(7, array.ElementAt(2));
@@ -379,6 +391,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
@@ -392,6 +405,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
@@ -400,6 +414,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(9);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
@@ -414,12 +429,14 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 2);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
 
             bst.Remove(7);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 1);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
         }
 
@@ -435,6 +452,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(5, array.ElementAt(1));
             Assert.AreEqual(7, array.ElementAt(2));
@@ -443,6 +461,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(5, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
@@ -456,6 +475,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(9, array.ElementAt(2));
@@ -464,6 +484,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(9);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(10, array.ElementAt(2));
@@ -478,12 +499,14 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 2);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(7, array.ElementAt(0));
             Assert.AreEqual(8, array.ElementAt(1));
 
             bst.Remove(7);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 1);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
         }
 
@@ -499,6 +522,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 5);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(5, array.ElementAt(1));
             Assert.AreEqual(6, array.ElementAt(2));
@@ -508,6 +532,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(5, array.ElementAt(0));
             Assert.AreEqual(6, array.ElementAt(1));
             Assert.AreEqual(7, array.ElementAt(2));
@@ -524,6 +549,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(6, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
@@ -531,6 +557,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(7);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 2);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(6, array.ElementAt(0));
             Assert.AreEqual(8, array.ElementAt(1));
         }
@@ -550,6 +577,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 7);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(4, array.ElementAt(1));
             Assert.AreEqual(5, array.ElementAt(2));
@@ -561,6 +589,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 6);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(5, array.ElementAt(1));
             Assert.AreEqual(6, array.ElementAt(2));
@@ -582,6 +611,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 9);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(4, array.ElementAt(1));
             Assert.AreEqual(6, array.ElementAt(2));
@@ -595,6 +625,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 8);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(6, array.ElementAt(1));
             Assert.AreEqual(7, array.ElementAt(2));
@@ -615,6 +646,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 6);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(4, array.ElementAt(1));
             Assert.AreEqual(5, array.ElementAt(2));
@@ -625,6 +657,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(4);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 5);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(3, array.ElementAt(0));
             Assert.AreEqual(5, array.ElementAt(1));
             Assert.AreEqual(10, array.ElementAt(2));
@@ -646,6 +679,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 6);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(10, array.ElementAt(2));
@@ -656,6 +690,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(10);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 5);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(11, array.ElementAt(2));
@@ -674,6 +709,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 7);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(10, array.ElementAt(2));
@@ -685,6 +721,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(10);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 6);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(11, array.ElementAt(2));
@@ -703,6 +740,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 6);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(10, array.ElementAt(2));
@@ -713,6 +751,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(10);
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 5);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(8, array.ElementAt(0));
             Assert.AreEqual(9, array.ElementAt(1));
             Assert.AreEqual(11, array.ElementAt(2));
@@ -742,6 +781,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Remove(200);
 
             Assert.AreEqual(13, array.Length);
+            Assert.AreEqual(array.Length, bst.Length);
             Assert.AreEqual(0, array.ElementAt(0));
             Assert.AreEqual(1, array.ElementAt(1));
             Assert.AreEqual(2, array.ElementAt(2));
