@@ -362,6 +362,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         [Test]
         public void ShouldRemoveCorrectElementOnRemoveWhenElementHasOneChildOnLeftAndIsNotRoot()
         {
+            //Node is on parent left
             var bst = new BinarySearchTree<int>();
             bst.Insert(7);
             bst.Insert(4);
@@ -379,6 +380,27 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
             Assert.AreEqual(3, array.ElementAt(0));
+            Assert.AreEqual(7, array.ElementAt(1));
+            Assert.AreEqual(8, array.ElementAt(2));
+
+            //Node is on parent right
+            bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(8);
+            bst.Insert(4);
+
+            array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(4, array.ElementAt(0));
+            Assert.AreEqual(7, array.ElementAt(1));
+            Assert.AreEqual(8, array.ElementAt(2));
+            Assert.AreEqual(9, array.ElementAt(3));
+
+            bst.Remove(9);
+            array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(4, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
         }
@@ -404,6 +426,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         [Test]
         public void ShouldRemoveCorrectElementOnRemoveWhenElementHasOneChildOnRightAndIsNotRoot()
         {
+            // Node is on parent left
             var bst = new BinarySearchTree<int>();
             bst.Insert(7);
             bst.Insert(4);
@@ -423,6 +446,27 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             Assert.AreEqual(5, array.ElementAt(0));
             Assert.AreEqual(7, array.ElementAt(1));
             Assert.AreEqual(8, array.ElementAt(2));
+
+            //Node is on parent right
+            bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(10);
+            bst.Insert(4);
+
+            array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, 4);
+            Assert.AreEqual(4, array.ElementAt(0));
+            Assert.AreEqual(7, array.ElementAt(1));
+            Assert.AreEqual(9, array.ElementAt(2));
+            Assert.AreEqual(10, array.ElementAt(3));
+
+            bst.Remove(9);
+            array = bst.DFS(DFSStrategy.InOrder);
+            Assert.AreEqual(array.Length, 3);
+            Assert.AreEqual(4, array.ElementAt(0));
+            Assert.AreEqual(7, array.ElementAt(1));
+            Assert.AreEqual(10, array.ElementAt(2));
         }
 
         [Test]
