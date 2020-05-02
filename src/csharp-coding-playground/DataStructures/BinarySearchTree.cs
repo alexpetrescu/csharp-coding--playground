@@ -89,6 +89,27 @@ namespace csharp_coding_playground.DataStructures
         }
 
         /// <summary>
+        /// Returns highest value after the given value.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public T Successor(T value)
+        {
+            (var parent, var node) = Search(value, null, root);
+            if (node == null) throw new Exception("Value does not exist in the tree.");
+
+            if (node.Right == null && parent != null && parent.Left == node)
+            {
+                return parent.Value;
+            }
+
+            (_, var successor) = Min(node, node.Right);
+            if (successor == null) return node.Value;
+
+            return successor.Value;
+        }
+
+        /// <summary>
         /// Removes node from the tree.
         /// </summary>
         /// <param name="value"></param>
@@ -156,6 +177,30 @@ namespace csharp_coding_playground.DataStructures
         }
 
         /// <summary>
+        /// Returns the min value of the tree.
+        /// </summary>
+        /// <returns></returns>
+        public T Min()
+        {
+            (_, var min) = Min(null, root);
+
+            if (min == null) return default;
+            return min.Value;
+        }
+
+        /// <summary>
+        /// Returns the max value of the tree.
+        /// </summary>
+        /// <returns></returns>
+        public T Max()
+        {
+            (_, var max) = Max(null, root);
+
+            if (max == null) return default;
+            return max.Value;
+        }
+
+        /// <summary>
         /// Returns the min node from the given node.
         /// </summary>
         /// <param name="parent"></param>
@@ -163,8 +208,22 @@ namespace csharp_coding_playground.DataStructures
         /// <returns></returns>
         private (BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node) Min(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
+            if (node == null) return (null, null);
             if (node.Left == null) return (parent, node);
             return Min(node, node.Left);
+        }
+
+        /// <summary>
+        /// Returns the max node from the given node.
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        private (BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node) Max(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
+        {
+            if (node == null) return (null, null);
+            if (node.Right == null) return (parent, node);
+            return Max(node, node.Right);
         }
 
         /// <summary>

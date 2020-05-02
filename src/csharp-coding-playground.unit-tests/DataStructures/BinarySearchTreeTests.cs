@@ -8,6 +8,50 @@ namespace csharp_coding_playground.unit_tests.DataStructures
     public class BinarySearchTreeTests
     {
         [Test]
+        public void ShouldReturnMinValueOnMinWhenBSTIsNotEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(3);
+            bst.Insert(2);
+
+            Assert.AreEqual(2, bst.Min());
+        }
+
+        [Test]
+        public void ShouldReturnDefaultOnMinWhenBSTIsEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+
+            Assert.AreEqual(default(int), bst.Min());
+        }
+
+        [Test]
+        public void ShouldReturnMaxValueOnMaxWhenBSTIsNotEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(3);
+            bst.Insert(2);
+
+            Assert.AreEqual(9, bst.Max());
+        }
+
+        [Test]
+        public void ShouldReturnDefaultOnMaxWhenBSTIsEmpty()
+        {
+            var bst = new BinarySearchTree<int>();
+
+            Assert.AreEqual(default(int), bst.Max());
+        }
+
+        [Test]
         public void ShouldThrowExceptionOnInsertWhenValueExists()
         {
             var bst = new BinarySearchTree<int>();
@@ -29,6 +73,67 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             Assert.Throws<Exception>(() => bst.Insert(7));
             Assert.Throws<Exception>(() => bst.Insert(4));
             Assert.Throws<Exception>(() => bst.Insert(3));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionOnSuccessorWhenNodeDoesNotExist()
+        {
+            var bst = new BinarySearchTree<int>();
+            Assert.Throws<Exception>(() => bst.Successor(7));
+
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            Assert.Throws<Exception>(() => bst.Successor(12));
+        }
+
+        [Test]
+        public void ShouldReturnNextHighestValueOnSuccessorWhenNodeHasNoRightElement()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+
+            Assert.AreEqual(7, bst.Successor(4));
+        }
+
+        [Test]
+        public void ShouldReturnNextHighestValueOnSuccessorWhenNodeHasRightElement()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+
+            Assert.AreEqual(5, bst.Successor(4));
+        }
+
+        [Test]
+        public void ShouldReturnNextHighestValueOnSuccessorWhenNodeHasMultipleRightElements()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(6);
+
+            Assert.AreEqual(5, bst.Successor(4));
+        }
+
+        [Test]
+        public void ShouldReturnSameValueOnSuccessorWhenNodeIsMaxInTheTree()
+        {
+            var bst = new BinarySearchTree<int>();
+            bst.Insert(7);
+            bst.Insert(9);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Insert(6);
+
+            Assert.AreEqual(9, bst.Successor(9));
         }
 
         [Test]
