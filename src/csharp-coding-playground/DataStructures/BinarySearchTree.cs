@@ -179,7 +179,10 @@ namespace csharp_coding_playground.DataStructures
         /// <param name="value"></param>
         private void Remove(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
-            if (node == null) return;
+            if (node == null)
+            {
+                return;
+            }
 
             if (node.Left == null && node.Right == null)
             {
