@@ -1,13 +1,17 @@
 # C# Coding Playground
+
 ![pipeline](https://github.com/alexpetrescu/csharp-coding-playground/workflows/pipeline/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e1170d8482ea448e9acf288d3dcfe964)](https://app.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Grade_Dashboard)
 [![Codacy Badge](https://img.shields.io/codacy/coverage/a7c41f5ce6904ba089f9807bf8e135c1)](https://www.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Coverage)
 ![license](https://img.shields.io/github/license/alexpetrescu/csharp-coding-playground)
-## Data Structures 
-### ResizeableArray   
+
+## Data Structures
+
+### ResizeableArray
+
 - [x] Automatically resizing array
 - [x] Length - Returns the number of elements in the array.
-- [x] Capacity  - Returns the number of elements that the array can hold.
+- [x] Capacity - Returns the number of elements that the array can hold.
 - [x] IsEmpty() - Returns true if the array is empty; false otherwise.
 - [x] ElementAt(int) - Returns the element at the given index.
 - [x] Add(T) - Adds the element at the end of array.
@@ -20,6 +24,7 @@
 - [x] Set(int, T) - Updates the value of the element at the given index.
 
 ### Linked List
+
 - [x] Head - The first element of the linked list.
 - [x] Tail - The last element of the linked list.
 - [x] Length - The number of elements in the linked list.
@@ -39,6 +44,7 @@
 - [x] Reverse() - Reverses the linked list.
 
 ### Stack
+
 - [x] Length - Returns the number of elements in the stack.
 - [x] IsEmpty - Returns true if the array is empty; false otherwise.
 - [x] Push(T) - Adds the element on top of the stack.
@@ -46,35 +52,46 @@
 - [x] Peek() - Returns the top of the stack.
 
 ### Queue
+
 - [x] Length - Returns the number of elements in the queue.
 - [x] IsEmpty - Returns true if the queue is empty; false otherwise.
 - [x] Enqueue(T) - Adds value at the end of the queue.
 - [x] Dequeue() - Returns and removes the first element in the queue.
 
 ### HashTable
+
 - [x] Add(K, T) - Adds value for the provided key; if key already exists, updates value.
 - [x] ContainsKey(K) - Returns if the key is present in the hash table.
 - [x] Get(K) - Returns the value for the give key.
 - [x] Remove(K) - Removes the given key from the hash table.
 
 ### Binary Search Tree
+
 - [x] Insert(T) - Inserts a new node with the given value in the tree.
 - [x] Search(T) - Searches for the given value in the tree.
 - [x] Remove(T) - Removes value from the tree.
 - [x] BFS() - Performs BFS on the tree.
 - [x] DFS(Strategy) - Performs DFS on the tree with the given strategy.
 - [x] Length - The number of nodes in the tree.
-- [x] Height - Returns the height of the tree. 
+- [x] Height - Returns the height of the tree.
 - [x] Successor(T) - Returns highest value after the given value.
 - [x] Min() - Returns the min value of the tree.
 - [x] Max() - Returns the max value of the tree.
 
 ## Algorithms
+
 ### Binary Search
-- Performs search on a sorted array for a given value. 
+
+- Performs search on a sorted array for a given value.
+
 ### Merge Sort
+
 - Performs merge sort on a given array.
+
 ### Quick Sort
+
 - Performs quick sort on a given array.
+
 ### Heap Sort
+
 - Performs heap sort on a given array.

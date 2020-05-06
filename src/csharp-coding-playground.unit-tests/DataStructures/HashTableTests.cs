@@ -1,5 +1,5 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
+using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.DataStructures
@@ -50,7 +50,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var hashTable = new HashTable<string, string>();
 
-            Assert.Throws<Exception>(() => hashTable.Get("foo"));
+            Assert.Throws<ValidationException>(() => hashTable.Get("foo"));
         }
 
         [Test]
@@ -89,11 +89,11 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var hashTable = new HashTable<HashCustomTableKey, string>();
 
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }, "foo");
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }, "bar");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "foo" }, "foo");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "bar" }, "bar");
 
-            Assert.AreEqual("foo", hashTable.Get(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }));
-            Assert.AreEqual("bar", hashTable.Get(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }));
+            Assert.AreEqual("foo", hashTable.Get(new HashCustomTableKey { HashCode = 1024, Key = "foo" }));
+            Assert.AreEqual("bar", hashTable.Get(new HashCustomTableKey { HashCode = 1024, Key = "bar" }));
         }
 
         [Test]
@@ -101,11 +101,11 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var hashTable = new HashTable<HashCustomTableKey, string>();
 
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }, "foo");
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }, "bar");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "foo" }, "foo");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "bar" }, "bar");
 
-            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }));
-            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }));
+            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey { HashCode = 1024, Key = "foo" }));
+            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey { HashCode = 1024, Key = "bar" }));
         }
 
         [Test]
@@ -113,12 +113,12 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var hashTable = new HashTable<HashCustomTableKey, string>();
 
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }, "foo");
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }, "bar");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "foo" }, "foo");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "bar" }, "bar");
 
-            Assert.AreEqual("foo", hashTable.Get(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }));
-            Assert.AreEqual("bar", hashTable.Get(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }));
-            Assert.Throws<Exception>(() => hashTable.Get(new HashCustomTableKey() { HashCode = 1024, Key = "baz" }));
+            Assert.AreEqual("foo", hashTable.Get(new HashCustomTableKey { HashCode = 1024, Key = "foo" }));
+            Assert.AreEqual("bar", hashTable.Get(new HashCustomTableKey { HashCode = 1024, Key = "bar" }));
+            Assert.Throws<ValidationException>(() => hashTable.Get(new HashCustomTableKey { HashCode = 1024, Key = "baz" }));
         }
 
         [Test]
@@ -126,12 +126,12 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var hashTable = new HashTable<HashCustomTableKey, string>();
 
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }, "foo");
-            hashTable.Add(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }, "bar");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "foo" }, "foo");
+            hashTable.Add(new HashCustomTableKey { HashCode = 1024, Key = "bar" }, "bar");
 
-            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey() { HashCode = 1024, Key = "foo" }));
-            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey() { HashCode = 1024, Key = "bar" }));
-            Assert.IsFalse(hashTable.ContainsKey(new HashCustomTableKey() { HashCode = 1024, Key = "baz" }));
+            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey { HashCode = 1024, Key = "foo" }));
+            Assert.IsTrue(hashTable.ContainsKey(new HashCustomTableKey { HashCode = 1024, Key = "bar" }));
+            Assert.IsFalse(hashTable.ContainsKey(new HashCustomTableKey { HashCode = 1024, Key = "baz" }));
         }
 
         private class HashCustomTableKey
@@ -142,8 +142,13 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             public override bool Equals(object obj)
             {
-                if (obj is HashCustomTableKey) return ((HashCustomTableKey)obj).Key == Key;
-                return base.Equals(obj);
+                var customTableKey = obj as HashCustomTableKey;
+                if (customTableKey != null)
+                {
+                    return customTableKey.Key == Key;
+                }
+
+                return false;
             }
 
             public override int GetHashCode()

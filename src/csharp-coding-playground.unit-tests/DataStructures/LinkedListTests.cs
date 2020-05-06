@@ -1,5 +1,5 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
+using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.DataStructures
@@ -45,7 +45,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.ElementAt(10));
+            Assert.Throws<ValidationException>(() => linkedList.ElementAt(10));
         }
 
         [Test]
@@ -53,11 +53,11 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.ElementAt(10));
-            Assert.Throws<Exception>(() => linkedList.ElementAt(0));
+            Assert.Throws<ValidationException>(() => linkedList.ElementAt(10));
+            Assert.Throws<ValidationException>(() => linkedList.ElementAt(0));
             linkedList.PushFront(10);
             linkedList.PushFront(11);
-            Assert.Throws<Exception>(() => linkedList.ElementAt(2));
+            Assert.Throws<ValidationException>(() => linkedList.ElementAt(2));
         }
 
         [Test]
@@ -131,7 +131,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.PopFront());
+            Assert.Throws<ValidationException>(() => linkedList.PopFront());
         }
 
         [Test]
@@ -224,7 +224,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.PopBack());
+            Assert.Throws<ValidationException>(() => linkedList.PopBack());
         }
 
         [Test]
@@ -266,7 +266,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.Front());
+            Assert.Throws<ValidationException>(() => linkedList.Front());
         }
 
         [Test]
@@ -289,7 +289,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.Back());
+            Assert.Throws<ValidationException>(() => linkedList.Back());
         }
 
         [Test]
@@ -297,7 +297,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.Insert(10, 20));
+            Assert.Throws<ValidationException>(() => linkedList.Insert(10, 20));
         }
 
         [Test]
@@ -367,7 +367,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.RemoveAt(100));
+            Assert.Throws<ValidationException>(() => linkedList.RemoveAt(100));
         }
 
         [Test]
@@ -596,7 +596,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var linkedList = new LinkedList<int>();
 
-            Assert.Throws<Exception>(() => linkedList.NthValueFromEnd(10));
+            Assert.Throws<ValidationException>(() => linkedList.NthValueFromEnd(10));
         }
 
         [Test]
@@ -696,15 +696,15 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         public void ShouldThrowExceptionOnSetWhenIndexOutofBounds()
         {
             var linkedList = new LinkedList<int>();
-            Assert.Throws<Exception>(() => linkedList.Set(0, 10));
+            Assert.Throws<ValidationException>(() => linkedList.Set(0, 10));
 
             linkedList.PushFront(10);
             Assert.AreEqual(1, linkedList.Length);
             Assert.AreEqual(10, linkedList.ElementAt(0));
 
-            Assert.Throws<Exception>(() => linkedList.Set(1, 10));
-            Assert.Throws<Exception>(() => linkedList.Set(3, 20));
-            Assert.Throws<Exception>(() => linkedList.Set(-1, 20));
+            Assert.Throws<ValidationException>(() => linkedList.Set(1, 10));
+            Assert.Throws<ValidationException>(() => linkedList.Set(3, 20));
+            Assert.Throws<ValidationException>(() => linkedList.Set(-1, 20));
         }
 
         [Test]

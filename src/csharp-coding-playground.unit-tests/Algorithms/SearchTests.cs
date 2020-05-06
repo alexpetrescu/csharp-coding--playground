@@ -8,7 +8,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldReturnCorrectIndexOnBinarySearchWhenItemIsSomewhereInTheArray()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(0, Search.BinarySearch(array, 1));
             Assert.AreEqual(1, Search.BinarySearch(array, 2));
@@ -24,7 +24,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldReturnCorrectIndexOnBinarySearchWhenItemInTheMiddleOfArray()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(3, Search.BinarySearch(array, 4));
         }
@@ -32,7 +32,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldReturnCorrectIndexOnBinarySearchWhenItemAtTheStartOfArray()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(0, Search.BinarySearch(array, 1));
         }
@@ -40,7 +40,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldReturnCorrectIndexOnBinarySearchWhenItemAtTheEndOfArray()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(7, Search.BinarySearch(array, 8));
         }
@@ -48,7 +48,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldReturnMinusOneOnBinarySearchWhenItemDoesNotExistInArray()
         {
-            int[] array = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             Assert.AreEqual(-1, Search.BinarySearch(array, 200));
         }

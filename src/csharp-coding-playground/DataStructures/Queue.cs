@@ -1,9 +1,10 @@
-﻿using System;
+﻿using csharp_coding_playground.Infrastructure;
+
 namespace csharp_coding_playground.DataStructures
 {
     public class Queue<T>
     {
-        private LinkedList<T> linkedList = new LinkedList<T>();
+        private readonly LinkedList<T> linkedList = new LinkedList<T>();
 
         /// <summary>
         /// Returns the number of elements in the queue.
@@ -43,7 +44,9 @@ namespace csharp_coding_playground.DataStructures
         public T Dequeue()
         {
             if (IsEmpty)
-                throw new Exception("Queue is empty");
+            {
+                throw new ValidationException("Queue is empty");
+            }
 
             return linkedList.PopFront();
         }

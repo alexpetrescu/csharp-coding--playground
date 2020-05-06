@@ -17,7 +17,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnMergeSortWhenArrayHasOneElement()
         {
-            var array = new int[] { 10 };
+            var array = new[] { 10 };
             Sort.MergeSort(array);
 
             Assert.AreEqual(1, array.Length);
@@ -27,7 +27,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnMergeSortWhenArrayIsTotallyUnordered()
         {
-            var array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            var array = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
             Sort.MergeSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -45,7 +45,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnMergeSortWhenArrayIsUnordered()
         {
-            var array = new int[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
+            var array = new[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
             Sort.MergeSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -63,7 +63,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnMergeSortWhenArrayIsOrdered()
         {
-            var array = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var array = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Sort.MergeSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -90,7 +90,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnQuickSortWhenArrayHasOneElement()
         {
-            var array = new int[] { 10 };
+            var array = new[] { 10 };
             Sort.MergeSort(array);
 
             Assert.AreEqual(1, array.Length);
@@ -100,7 +100,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnQuickSortWhenArrayIsTotallyUnordered()
         {
-            var array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            var array = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
             Sort.QuickSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -118,7 +118,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnQuickSortWhenArrayIsUnordered()
         {
-            var array = new int[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
+            var array = new[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
             Sort.QuickSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -136,7 +136,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnQuickSortWhenArrayIsOrdered()
         {
-            var array = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var array = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Sort.QuickSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -163,7 +163,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnHeapSortWhenArrayHasOneElement()
         {
-            var array = new int[] { 10 };
+            var array = new[] { 10 };
             Sort.HeapSort(array);
 
             Assert.AreEqual(1, array.Length);
@@ -173,7 +173,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnHeapSortWhenArrayIsTotallyUnordered()
         {
-            var array = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            var array = new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
             Sort.HeapSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -191,7 +191,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnHeapSortWhenArrayIsUnordered()
         {
-            var array = new int[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
+            var array = new[] { 0, 8, 6, 7, 3, 5, 2, 4, 1, 9 };
             Sort.HeapSort(array);
 
             Assert.AreEqual(0, array[0]);
@@ -209,7 +209,7 @@ namespace csharp_coding_playground.unit_tests.Algorithms
         [Test]
         public void ShouldSortCorrectlyOnHeapSortWhenArrayIsOrdered()
         {
-            var array = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var array = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Sort.HeapSort(array);
 
             Assert.AreEqual(0, array[0]);

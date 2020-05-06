@@ -1,5 +1,4 @@
-﻿using System;
-using csharp_coding_playground.Infrastructure;
+﻿using csharp_coding_playground.Infrastructure;
 
 namespace csharp_coding_playground.DataStructures
 {
@@ -34,7 +33,7 @@ namespace csharp_coding_playground.DataStructures
         /// <summary>
         /// The number of elements in the linked list.
         /// </summary>
-        public int Length { get; private set; } = 0;
+        public int Length { get; private set; }
 
 
         /// <summary>
@@ -56,7 +55,9 @@ namespace csharp_coding_playground.DataStructures
         public T ElementAt(int index)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             var node = head;
             while (index > 0)
@@ -96,10 +97,11 @@ namespace csharp_coding_playground.DataStructures
         public T PopFront()
         {
             if (Length == 0)
-                throw new Exception("Linked List is empty");
+            {
+                throw new ValidationException("Linked List is empty");
+            }
 
             var node = head;
-
             head = head.Next;
             Length--;
 
@@ -141,7 +143,9 @@ namespace csharp_coding_playground.DataStructures
         public T PopBack()
         {
             if (Length == 0)
-                throw new Exception("Linked List is empty");
+            {
+                throw new ValidationException("Linked List is empty");
+            }
 
             var node = tail;
             LinkedListNode<T> prevNode = null;
@@ -154,9 +158,12 @@ namespace csharp_coding_playground.DataStructures
             }
 
             tail = prevNode;
-            if (tail != null) tail.Next = null;
-            Length--;
+            if (tail != null)
+            {
+                tail.Next = null;
+            }
 
+            Length--;
             if (Length <= 1)
             {
                 head = tail;
@@ -173,7 +180,9 @@ namespace csharp_coding_playground.DataStructures
         public T Front()
         {
             if (Length == 0)
-                throw new Exception("Linked List is empty");
+            {
+                throw new ValidationException("Linked List is empty");
+            }
 
             return head.Value;
         }
@@ -185,7 +194,9 @@ namespace csharp_coding_playground.DataStructures
         public T Back()
         {
             if (Length == 0)
-                throw new Exception("Linked List is empty");
+            {
+                throw new ValidationException("Linked List is empty");
+            }
 
             return tail.Value;
         }
@@ -198,7 +209,9 @@ namespace csharp_coding_playground.DataStructures
         public void Set(int index, T value)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Linked List is empty");
+            }
 
             var node = head;
             while (index > 0)
@@ -219,8 +232,10 @@ namespace csharp_coding_playground.DataStructures
         public void Insert(int index, T value)
         {
             if (index != 0 && (index >= Length || index < 0))
-                throw new Exception("Index out of bounds");
-            
+            {
+                throw new ValidationException("Index out of bounds");
+            }
+
             if (index == 0)
             {
                 PushFront(value);
@@ -239,7 +254,11 @@ namespace csharp_coding_playground.DataStructures
             var newNode = new LinkedListNode<T>();
             newNode.Value = value;
             newNode.Next = node;
-            if (prevNode != null) prevNode.Next = newNode;
+            if (prevNode != null)
+            {
+                prevNode.Next = newNode;
+            }
+
             Length++;
         }
 
@@ -250,7 +269,9 @@ namespace csharp_coding_playground.DataStructures
         public void RemoveAt(int index)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             if (index == 0)
             {
@@ -296,7 +317,11 @@ namespace csharp_coding_playground.DataStructures
                     {
                         prev.Next = node.Next;
                         Length--;
-                        if (node.Next == null) tail = prev;
+
+                        if (node.Next == null)
+                        {
+                            tail = prev;
+                        }
                     }
                     else
                     {
@@ -307,8 +332,6 @@ namespace csharp_coding_playground.DataStructures
                 prev = node;
                 node = node.Next;
             }
-
-
         }
 
         /// <summary>
@@ -319,7 +342,9 @@ namespace csharp_coding_playground.DataStructures
         public T NthValueFromEnd(int n)
         {
             if (n >= Length || n < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             return ElementAt(Length - 1 - n);
         }

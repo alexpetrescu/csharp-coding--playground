@@ -1,5 +1,5 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
+using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.DataStructures
@@ -66,7 +66,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var stack = new Stack<int>();
             Assert.AreEqual(0, stack.Length);
 
-            Assert.Throws<Exception>(() => stack.Pop());
+            Assert.Throws<ValidationException>(() => stack.Pop());
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var stack = new Stack<int>();
             Assert.AreEqual(0, stack.Length);
 
-            Assert.Throws<Exception>(() => stack.Peek());
+            Assert.Throws<ValidationException>(() => stack.Peek());
         }
 
         [Test]

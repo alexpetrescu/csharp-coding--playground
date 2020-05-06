@@ -1,4 +1,6 @@
 ﻿using System;
+using csharp_coding_playground.Infrastructure;
+
 namespace csharp_coding_playground.DataStructures
 {
     public class ResizeableArray<T>
@@ -8,7 +10,7 @@ namespace csharp_coding_playground.DataStructures
         /// <summary>
         /// Returns the number of elements in the array.
         /// </summary>
-        public int Length { get; private set; } = 0;
+        public int Length { get; private set; }
 
         /// <summary>
         /// Returns the number of elements that the array can hold.
@@ -36,7 +38,9 @@ namespace csharp_coding_playground.DataStructures
         public T ElementAt(int index)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             return data[index];
         }
@@ -50,7 +54,10 @@ namespace csharp_coding_playground.DataStructures
             data[Length] = item;
             Length++;
 
-            if (Length == Capacity) Resize(Capacity * 2);
+            if (Length == Capacity)
+            {
+                Resize(Capacity * 2);
+            }
         }
 
         /// <summary>
@@ -61,12 +68,18 @@ namespace csharp_coding_playground.DataStructures
         public void Insert(T item, int index)
         {
             if (index != 0 && (index >= Length || index < 0))
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             ShiftRight(index);
             Length++;
             data[index] = item;
-            if (Length == Capacity) Resize(Capacity * 2);
+
+            if (Length == Capacity)
+            {
+                Resize(Capacity * 2);
+            }
         }
 
         /// <summary>
@@ -85,11 +98,17 @@ namespace csharp_coding_playground.DataStructures
         public void RemoveAt(int index)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
 
             ShiftLeft(index);
             Length--;
-            if (Length == Capacity / 4) Resize(Capacity / 2);
+
+            if (Length == Capacity / 4)
+            {
+                Resize(Capacity / 2);
+            }
         }
 
         /// <summary>
@@ -99,7 +118,7 @@ namespace csharp_coding_playground.DataStructures
         public void Remove(T item)
         {
             int i = 0;
-            while(i < Length)
+            while (i < Length)
             {
                 if (item.Equals(data[i]))
                 {
@@ -119,11 +138,17 @@ namespace csharp_coding_playground.DataStructures
         public T Pop()
         {
             if (Length == 0)
-                throw new Exception("The array is empty");
+            {
+                throw new ValidationException("The array is empty");
+            }
 
             var element = data[Length - 1];
             Length--;
-            if (Length == Capacity / 4) Resize(Capacity / 2);
+
+            if (Length == Capacity / 4)
+            {
+                Resize(Capacity / 2);
+            }
 
             return element;
         }
@@ -151,7 +176,10 @@ namespace csharp_coding_playground.DataStructures
         public void Set(int index, T item)
         {
             if (index >= Length || index < 0)
-                throw new Exception("Index out of bounds");
+            {
+                throw new ValidationException("Index out of bounds");
+            }
+
 
             data[index] = item;
         }
@@ -163,15 +191,20 @@ namespace csharp_coding_playground.DataStructures
         private void Resize(int size)
         {
             size = Math.Max(size, MIN_CAPACITY);
-            if (Capacity == size) return;
+            if (Capacity == size)
+            {
+                return;
+            }
 
             int newCapacity = size;
             Capacity = newCapacity;
             T[] newData = new T[newCapacity];
-            for(int i = 0; i < Length; i++)
+
+            for (int i = 0; i < Length; i++)
             {
                 newData[i] = data[i];
             }
+
             data = newData;
         }
 

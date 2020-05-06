@@ -7,7 +7,7 @@ namespace csharp_coding_playground.DataStructures
     {
         private const int HASH_TABLE_SIZE = 1024;
 
-        private LinkedList<HashTableEntry<K, T>>[] table = new LinkedList<HashTableEntry<K, T>>[HASH_TABLE_SIZE];
+        private readonly LinkedList<HashTableEntry<K, T>>[] table = new LinkedList<HashTableEntry<K, T>>[HASH_TABLE_SIZE];
 
         /// <summary>
         /// Adds value for the provided key; if key already exists, updates value.
@@ -18,7 +18,7 @@ namespace csharp_coding_playground.DataStructures
         {
             var index = GetIndex(key);
             var entryList = table[index];
-            var entry = new HashTableEntry<K, T>()
+            var entry = new HashTableEntry<K, T>
             {
                 Key = key,
                 Value = value
@@ -57,7 +57,10 @@ namespace csharp_coding_playground.DataStructures
             var index = GetIndex(key);
             var list = table[index];
 
-            if (list == null || list.IsEmpty) return false;
+            if (list == null || list.IsEmpty)
+            {
+                return false;
+            }
 
             for (int i = 0; i < list.Length; i++)
             {
@@ -77,15 +80,21 @@ namespace csharp_coding_playground.DataStructures
             var index = GetIndex(key);
             var list = table[index];
 
-            if (list == null || list.IsEmpty) throw new Exception("Key does not exist");
+            if (list == null || list.IsEmpty)
+            {
+                throw new ValidationException("Key does not exist");
+            }
 
             for (int i = 0; i < list.Length; i++)
             {
                 var element = list.ElementAt(i);
-                if (element.Key.Equals(key)) return element.Value;
+                if (element.Key.Equals(key))
+                {
+                    return element.Value;
+                }
             }
 
-            throw new Exception("Key does not exist");
+            throw new ValidationException("Key does not exist");
         }
 
         /// <summary>
@@ -96,12 +105,13 @@ namespace csharp_coding_playground.DataStructures
         {
             var index = GetIndex(key);
             var list = table[index];
-            var entry = new HashTableEntry<K, T>()
-            {
-                Key = key
-            };
+            var entry = new HashTableEntry<K, T> { Key = key };
 
-            if (list == null || list.IsEmpty) return;
+            if (list == null || list.IsEmpty)
+            {
+                return;
+            }
+
             list.Remove(entry);
         }
 

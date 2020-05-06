@@ -4,17 +4,17 @@ using csharp_coding_playground.Infrastructure;
 namespace csharp_coding_playground.DataStructures
 {
     public class BinarySearchTree<T>
-        where T: IComparable
+        where T : IComparable
     {
         /// <summary>
         /// The root node of the tree.
         /// </summary>
-        private BinarySearchTreeNode<T> root = null;
+        private BinarySearchTreeNode<T> root;
 
         /// <summary>
         /// The number of nodes in the tree.
         /// </summary>
-        public int Length { get; private set; } = 0;
+        public int Length { get; private set; }
 
         /// <summary>
         /// Returns the height of the tree.
@@ -35,7 +35,10 @@ namespace csharp_coding_playground.DataStructures
         /// <returns></returns>
         private int GetHeight(BinarySearchTreeNode<T> node)
         {
-            if (node == null) return 0;
+            if (node == null)
+            {
+                return 0;
+            }
 
             int lHeight = GetHeight(node.Left);
             int rHeight = GetHeight(node.Right);
@@ -67,10 +70,19 @@ namespace csharp_coding_playground.DataStructures
             }
 
             var check = node.Value.CompareTo(value);
-            if (check == 0) throw new Exception("Value already exists in the tree.");
+            if (check == 0)
+            {
+                throw new ValidationException("Value already exists in the tree.");
+            }
 
-            if (check > 0) node.Left = Insert(value, node.Left);
-            else node.Right = Insert(value, node.Right);
+            if (check > 0)
+            {
+                node.Left = Insert(value, node.Left);
+            }
+            else
+            {
+                node.Right = Insert(value, node.Right);
+            }
 
             return node;
         }
@@ -83,7 +95,10 @@ namespace csharp_coding_playground.DataStructures
         public T Search(T value)
         {
             (_, var result) = Search(value, null, root);
-            if (result == null) return default;
+            if (result == null)
+            {
+                return default;
+            }
 
             return result.Value;
         }
@@ -96,12 +111,24 @@ namespace csharp_coding_playground.DataStructures
         /// <returns></returns>
         private (BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node) Search(T value, BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
-            if (node == null) return (parent, null);
+            if (node == null)
+            {
+                return (parent, null);
+            }
 
             var compare = node.Value.CompareTo(value);
-            if (compare == 0) return (parent, node);
-            else if (compare > 0) return Search(value, node, node.Left);
-            else return Search(value, node, node.Right);
+            if (compare == 0)
+            {
+                return (parent, node);
+            }
+            else if (compare > 0)
+            {
+                return Search(value, node, node.Left);
+            }
+            else
+            {
+                return Search(value, node, node.Right);
+            }
         }
 
         /// <summary>
@@ -123,7 +150,10 @@ namespace csharp_coding_playground.DataStructures
         public T Successor(T value)
         {
             (var parent, var node) = Search(value, null, root);
-            if (node == null) throw new Exception("Value does not exist in the tree.");
+            if (node == null)
+            {
+                throw new ValidationException("Value does not exist in the tree.");
+            }
 
             if (node.Right == null && parent != null && parent.Left == node)
             {
@@ -211,7 +241,11 @@ namespace csharp_coding_playground.DataStructures
         {
             (_, var min) = Min(null, root);
 
-            if (min == null) return default;
+            if (min == null)
+            {
+                return default;
+            }
+
             return min.Value;
         }
 
@@ -223,7 +257,11 @@ namespace csharp_coding_playground.DataStructures
         {
             (_, var max) = Max(null, root);
 
-            if (max == null) return default;
+            if (max == null)
+            {
+                return default;
+            }
+
             return max.Value;
         }
 
@@ -235,8 +273,16 @@ namespace csharp_coding_playground.DataStructures
         /// <returns></returns>
         private (BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node) Min(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
-            if (node == null) return (null, null);
-            if (node.Left == null) return (parent, node);
+            if (node == null)
+            {
+                return (null, null);
+            }
+
+            if (node.Left == null)
+            {
+                return (parent, node);
+            }
+
             return Min(node, node.Left);
         }
 
@@ -248,8 +294,16 @@ namespace csharp_coding_playground.DataStructures
         /// <returns></returns>
         private (BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node) Max(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
-            if (node == null) return (null, null);
-            if (node.Right == null) return (parent, node);
+            if (node == null)
+            {
+                return (null, null);
+            }
+
+            if (node.Right == null)
+            {
+                return (parent, node);
+            }
+
             return Max(node, node.Right);
         }
 
@@ -263,11 +317,20 @@ namespace csharp_coding_playground.DataStructures
             Queue<BinarySearchTreeNode<T>> queue = new Queue<BinarySearchTreeNode<T>>();
             queue.Enqueue(root);
 
-            while(!queue.IsEmpty)
+            while (!queue.IsEmpty)
             {
                 var node = queue.Dequeue();
-                if (node.Left != null) queue.Enqueue(node.Left);
-                if (node.Right != null) queue.Enqueue(node.Right);
+
+                if (node.Left != null)
+                {
+                    queue.Enqueue(node.Left);
+                }
+
+                if (node.Right != null)
+                {
+                    queue.Enqueue(node.Right);
+                }
+
                 result.Add(node.Value);
             }
 
@@ -275,11 +338,21 @@ namespace csharp_coding_playground.DataStructures
         }
 
         /// <summary>
+        /// Performs DFS InOrder on the tree.
+        /// </summary>
+        /// <param name="strategy"></param>
+        /// <returns></returns>
+        public ResizeableArray<T> DFS()
+        {
+            return DFS(DFSStrategy.InOrder);
+        }
+
+        /// <summary>
         /// Performs DFS on the tree with the given strategy.
         /// </summary>
         /// <param name="strategy"></param>
         /// <returns></returns>
-        public ResizeableArray<T> DFS(DFSStrategy strategy = DFSStrategy.InOrder)
+        public ResizeableArray<T> DFS(DFSStrategy strategy)
         {
             var array = new ResizeableArray<T>();
             switch (strategy)
@@ -294,7 +367,7 @@ namespace csharp_coding_playground.DataStructures
                     DFSPreOrder(root, array);
                     break;
                 default:
-                    throw new Exception("Unknown strategy");
+                    throw new ValidationException("Unknown strategy");
             }
 
             return array;
@@ -342,4 +415,4 @@ namespace csharp_coding_playground.DataStructures
             array.Add(node.Value);
         }
     }
-}     
+}

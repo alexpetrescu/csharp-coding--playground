@@ -1,9 +1,10 @@
-﻿using System;
+﻿using csharp_coding_playground.Infrastructure;
+
 namespace csharp_coding_playground.DataStructures
 {
     public class Stack<T>
     {
-        private LinkedList<T> linkedList = new LinkedList<T>();
+        private readonly LinkedList<T> linkedList = new LinkedList<T>();
 
         /// <summary>
         /// Returns the number of elements in the stack.
@@ -43,7 +44,9 @@ namespace csharp_coding_playground.DataStructures
         public T Pop()
         {
             if (IsEmpty)
-                throw new Exception("Stack is empty");
+            {
+                throw new ValidationException("Stack is empty");
+            }
 
             return linkedList.PopFront();
         }
@@ -55,7 +58,9 @@ namespace csharp_coding_playground.DataStructures
         public T Peek()
         {
             if (IsEmpty)
-                throw new Exception("Stack is empty");
+            {
+                throw new ValidationException("Stack is empty");
+            }
 
             return linkedList.Front();
         }
