@@ -19,5 +19,10 @@ namespace csharp_coding_playground.Infrastructure
 
             return false;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

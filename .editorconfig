@@ -196,6 +196,3 @@ dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.required_suffix =
 dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
-
-# CS0659: Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
-dotnet_diagnostic.CS0659.severity = none
