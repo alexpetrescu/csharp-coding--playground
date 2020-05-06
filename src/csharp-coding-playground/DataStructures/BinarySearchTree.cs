@@ -66,7 +66,7 @@ namespace csharp_coding_playground.DataStructures
         {
             if (node == null)
             {
-                return new BinarySearchTreeNode<T>() { Value = value };
+                return new BinarySearchTreeNode<T> { Value = value };
             }
 
             var check = node.Value.CompareTo(value);
@@ -138,7 +138,11 @@ namespace csharp_coding_playground.DataStructures
         public void Remove(T value)
         {
             (var parent, var node) = Search(value, null, root);
-            if (node != null) Length--;
+            if (node != null)
+            {
+                Length--;
+            }
+
             Remove(parent, node);
         }
 
@@ -161,7 +165,10 @@ namespace csharp_coding_playground.DataStructures
             }
 
             (_, var successor) = Min(node, node.Right);
-            if (successor == null) return node.Value;
+            if (successor == null)
+            {
+                return node.Value;
+            }
 
             return successor.Value;
         }
@@ -182,8 +189,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = null;
-                    if (parent.Right == node) parent.Right = null;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = null;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = null;
+                    }
                 }
 
                 return;
@@ -197,8 +211,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = node.Right;
-                    if (parent.Right == node) parent.Right = node.Right;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = node.Right;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = node.Right;
+                    }
                 }
 
                 return;
@@ -212,8 +233,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = node.Left;
-                    if (parent.Right == node) parent.Right = node.Left;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = node.Left;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = node.Left;
+                    }
                 }
 
                 return;
@@ -240,7 +268,6 @@ namespace csharp_coding_playground.DataStructures
         public T Min()
         {
             (_, var min) = Min(null, root);
-
             if (min == null)
             {
                 return default;
@@ -256,7 +283,6 @@ namespace csharp_coding_playground.DataStructures
         public T Max()
         {
             (_, var max) = Max(null, root);
-
             if (max == null)
             {
                 return default;
