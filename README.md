@@ -1,7 +1,7 @@
 # C# Coding Playground
 ![pipeline](https://github.com/alexpetrescu/csharp-coding-playground/workflows/pipeline/badge.svg)
-[![Codacy Badge]](https://api.codacy.com/project/badge/Grade/e1170d8482ea448e9acf288d3dcfe964)](https://app.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Grade_Dashboard)
-[![Codacy Badge](https://img.shields.io/codacy/coverage/a7c41f5ce6904ba089f9807bf8e135c1)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e1170d8482ea448e9acf288d3dcfe964)](https://app.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Grade_Dashboard)
+![Codacy Badge](https://img.shields.io/codacy/coverage/a7c41f5ce6904ba089f9807bf8e135c1)
 ![license](https://img.shields.io/github/license/alexpetrescu/csharp-coding-playground)
 ## Data Structures 
 ### ResizeableArray   
