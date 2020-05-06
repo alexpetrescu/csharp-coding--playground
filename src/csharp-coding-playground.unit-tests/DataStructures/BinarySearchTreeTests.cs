@@ -1,5 +1,4 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
 using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
@@ -88,34 +87,34 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var bst = new BinarySearchTree<int>();
 
             bst.Insert(7);
-            Assert.Throws<Exception>(() => bst.Insert(7));
+            Assert.Throws<ValidationException>(() => bst.Insert(7));
 
             bst.Insert(9);
-            Assert.Throws<Exception>(() => bst.Insert(7));
-            Assert.Throws<Exception>(() => bst.Insert(9));
+            Assert.Throws<ValidationException>(() => bst.Insert(7));
+            Assert.Throws<ValidationException>(() => bst.Insert(9));
 
             bst.Insert(4);
-            Assert.Throws<Exception>(() => bst.Insert(9));
-            Assert.Throws<Exception>(() => bst.Insert(7));
-            Assert.Throws<Exception>(() => bst.Insert(4));
+            Assert.Throws<ValidationException>(() => bst.Insert(9));
+            Assert.Throws<ValidationException>(() => bst.Insert(7));
+            Assert.Throws<ValidationException>(() => bst.Insert(4));
 
             bst.Insert(3);
-            Assert.Throws<Exception>(() => bst.Insert(9));
-            Assert.Throws<Exception>(() => bst.Insert(7));
-            Assert.Throws<Exception>(() => bst.Insert(4));
-            Assert.Throws<Exception>(() => bst.Insert(3));
+            Assert.Throws<ValidationException>(() => bst.Insert(9));
+            Assert.Throws<ValidationException>(() => bst.Insert(7));
+            Assert.Throws<ValidationException>(() => bst.Insert(4));
+            Assert.Throws<ValidationException>(() => bst.Insert(3));
         }
 
         [Test]
         public void ShouldThrowExceptionOnSuccessorWhenNodeDoesNotExist()
         {
             var bst = new BinarySearchTree<int>();
-            Assert.Throws<Exception>(() => bst.Successor(7));
+            Assert.Throws<ValidationException>(() => bst.Successor(7));
 
             bst.Insert(7);
             bst.Insert(9);
             bst.Insert(4);
-            Assert.Throws<Exception>(() => bst.Successor(12));
+            Assert.Throws<ValidationException>(() => bst.Successor(12));
         }
 
         [Test]
@@ -410,7 +409,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Insert(1);
             bst.Insert(0);
 
-            Assert.Throws<Exception>(() => bst.DFS((DFSStrategy)(-1)));
+            Assert.Throws<ValidationException>(() => bst.DFS((DFSStrategy)(-1)));
         }
 
         [Test]
@@ -475,7 +474,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             bst.Insert(7);
             bst.Insert(9);
             bst.Insert(4);
-            
+
             var array = bst.DFS(DFSStrategy.InOrder);
             Assert.AreEqual(array.Length, 3);
             Assert.AreEqual(4, array.ElementAt(0));

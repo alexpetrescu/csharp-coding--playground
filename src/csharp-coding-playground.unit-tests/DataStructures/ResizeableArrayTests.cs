@@ -1,5 +1,5 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
+using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.DataStructures
@@ -45,7 +45,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var array = new ResizeableArray<int>();
 
-            Assert.Throws<Exception>(() => array.ElementAt(10));
+            Assert.Throws<ValidationException>(() => array.ElementAt(10));
         }
 
         [Test]
@@ -53,11 +53,11 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var array = new ResizeableArray<int>();
 
-            Assert.Throws<Exception>(() => array.ElementAt(10));
-            Assert.Throws<Exception>(() => array.ElementAt(0));
+            Assert.Throws<ValidationException>(() => array.ElementAt(10));
+            Assert.Throws<ValidationException>(() => array.ElementAt(0));
             array.Add(10);
             array.Add(11);
-            Assert.Throws<Exception>(() => array.ElementAt(2));
+            Assert.Throws<ValidationException>(() => array.ElementAt(2));
         }
 
         [Test]
@@ -92,6 +92,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             {
                 Assert.AreEqual(i, array.ElementAt(i));
             }
+
             Assert.AreEqual(32, array.Capacity);
         }
 
@@ -116,7 +117,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var array = new ResizeableArray<int>();
 
-            Assert.Throws<Exception>(() => array.Insert(1, 1));
+            Assert.Throws<ValidationException>(() => array.Insert(1, 1));
         }
 
         [Test]
@@ -159,9 +160,20 @@ namespace csharp_coding_playground.unit_tests.DataStructures
 
             for (int i = 0; i < 16; i++)
             {
-                if (i < 4) Assert.AreEqual(i, array.ElementAt(i));
-                if (i == 4) Assert.AreEqual(200, array.ElementAt(i));
-                if (i > 4) Assert.AreEqual(i - 1, array.ElementAt(i));
+                if (i < 4)
+                {
+                    Assert.AreEqual(i, array.ElementAt(i));
+                }
+
+                if (i == 4)
+                {
+                    Assert.AreEqual(200, array.ElementAt(i));
+                }
+
+                if (i > 4)
+                {
+                    Assert.AreEqual(i - 1, array.ElementAt(i));
+                }
             }
         }
 
@@ -200,7 +212,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             Assert.AreEqual(200, array.ElementAt(0));
             for (int i = 1; i < 16; i++)
             {
-                Assert.AreEqual(i-1, array.ElementAt(i));
+                Assert.AreEqual(i - 1, array.ElementAt(i));
             }
         }
 
@@ -243,7 +255,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             Assert.AreEqual(16, array.Capacity);
             Assert.AreEqual(8, array.Length);
 
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 array.RemoveAt(0);
             }
@@ -258,7 +270,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var array = new ResizeableArray<int>();
 
             Assert.AreEqual(0, array.Length);
-            Assert.Throws<Exception>(() => array.RemoveAt(1));
+            Assert.Throws<ValidationException>(() => array.RemoveAt(1));
         }
 
         [Test]
@@ -376,7 +388,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             var array = new ResizeableArray<int>();
 
             Assert.AreEqual(0, array.Length);
-            Assert.Throws<Exception>(() => array.Pop());
+            Assert.Throws<ValidationException>(() => array.Pop());
         }
 
         [Test]
@@ -432,7 +444,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var array = new ResizeableArray<int>();
 
-            Assert.Throws<Exception>(() => array.Set(0, 15));
+            Assert.Throws<ValidationException>(() => array.Set(0, 15));
         }
 
         [Test]
@@ -444,7 +456,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
             array.Add(3);
 
             Assert.AreEqual(3, array.Length);
-            Assert.Throws<Exception>(() => array.Set(6, 15));
+            Assert.Throws<ValidationException>(() => array.Set(6, 15));
         }
 
         [Test]
@@ -452,7 +464,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var array = new ResizeableArray<int>();
 
-            Assert.Throws<Exception>(() => array.Pop());
+            Assert.Throws<ValidationException>(() => array.Pop());
         }
     }
 }

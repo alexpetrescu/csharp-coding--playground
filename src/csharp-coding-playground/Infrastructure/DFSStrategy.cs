@@ -1,5 +1,4 @@
-﻿
-namespace csharp_coding_playground.Infrastructure
+﻿namespace csharp_coding_playground.Infrastructure
 {
     public enum DFSStrategy
     {

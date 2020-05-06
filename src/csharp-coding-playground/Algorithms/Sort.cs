@@ -9,7 +9,7 @@ namespace csharp_coding_playground.Algorithms
         /// <typeparam name="T"></typeparam>
         /// <param name="array"></param>
         public static void MergeSort<T>(T[] array)
-            where T: IComparable
+            where T : IComparable
         {
             MergeSortRecursive(array, 0, array.Length - 1);
         }
@@ -31,7 +31,7 @@ namespace csharp_coding_playground.Algorithms
         /// <typeparam name="T"></typeparam>
         /// <param name="array"></param>
         public static void HeapSort<T>(T[] array)
-            where T:IComparable
+            where T : IComparable
         {
             int n = array.Length;
 
@@ -40,7 +40,7 @@ namespace csharp_coding_playground.Algorithms
                 Heapify(array, n, i);
             }
 
-            for (int i = n-1; i > 0; i--)
+            for (int i = n - 1; i > 0; i--)
             {
                 T swap = array[0];
                 array[0] = array[i];
@@ -58,7 +58,7 @@ namespace csharp_coding_playground.Algorithms
         /// <param name="n"></param>
         /// <param name="root"></param>
         private static void Heapify<T>(T[] array, int n, int root)
-            where T: IComparable
+            where T : IComparable
         {
             int largest = root;
             int l = 2 * root + 1;
@@ -101,7 +101,7 @@ namespace csharp_coding_playground.Algorithms
         /// <param name="l"></param>
         /// <param name="r"></param>
         private static void QuickSortRecursive<T>(T[] array, int l, int r)
-            where T: IComparable
+            where T : IComparable
         {
             if (l < r)
             {
@@ -158,7 +158,7 @@ namespace csharp_coding_playground.Algorithms
         /// <param name="l"></param>
         /// <param name="r"></param>
         private static void Merge<T>(T[] array, int l, int r)
-            where T: IComparable
+            where T : IComparable
         {
             int m = (l + r) / 2;
             T[] merge = new T[r - l + 1];
@@ -198,7 +198,7 @@ namespace csharp_coding_playground.Algorithms
 
             for (int h = 0; h < r - l + 1; h++)
             {
-                array[l+h] = merge[h];
+                array[l + h] = merge[h];
             }
         }
     }

@@ -1,5 +1,5 @@
-﻿using System;
-using csharp_coding_playground.DataStructures;
+﻿using csharp_coding_playground.DataStructures;
+using csharp_coding_playground.Infrastructure;
 using NUnit.Framework;
 
 namespace csharp_coding_playground.unit_tests.DataStructures
@@ -70,7 +70,7 @@ namespace csharp_coding_playground.unit_tests.DataStructures
         {
             var queue = new Queue<int>();
 
-            Assert.Throws<Exception>(() => queue.Dequeue());
+            Assert.Throws<ValidationException>(() => queue.Dequeue());
         }
 
         [Test]

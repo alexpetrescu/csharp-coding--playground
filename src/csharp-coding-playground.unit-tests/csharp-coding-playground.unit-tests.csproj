@@ -24,4 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\csharp-coding-playground\csharp-coding-playground.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="..\.editorconfig" />
+  </ItemGroup>
 </Project>

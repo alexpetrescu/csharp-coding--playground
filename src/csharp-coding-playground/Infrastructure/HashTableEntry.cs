@@ -11,13 +11,13 @@ namespace csharp_coding_playground.Infrastructure
 
         public override bool Equals(object obj)
         {
-            if (obj is HashTableEntry<T, K>) return ((HashTableEntry<T, K>)obj).Key.Equals(Key);
-            return base.Equals(obj);
-        }
+            var entry = obj as HashTableEntry<T, K>;
+            if (entry != null)
+            {
+                return entry.Key.Equals(Key);
+            }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
+            return false;
         }
     }
 }

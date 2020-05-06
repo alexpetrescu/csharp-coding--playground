@@ -28,7 +28,10 @@ namespace csharp_coding_playground.Algorithms
         private static int BinarySearch<T>(T[] array, T value, int l, int r)
             where T : IComparable
         {
-            if (l > r) return -1;
+            if (l > r)
+            {
+                return -1;
+            }
 
             int m = (l + r) / 2;
             var compareResult = array[m].CompareTo(value);
