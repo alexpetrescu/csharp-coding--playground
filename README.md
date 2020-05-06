@@ -1,7 +1,7 @@
 # C# Coding Playground
 ![pipeline](https://github.com/alexpetrescu/csharp-coding-playground/workflows/pipeline/badge.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e1170d8482ea448e9acf288d3dcfe964)](https://app.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Grade_Dashboard)
-[![Coverage Status](https://coveralls.io/repos/github/alexpetrescu/csharp-coding-playground/badge.svg?branch=master)](https://coveralls.io/github/alexpetrescu/csharp-coding-playground?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/a7c41f5ce6904ba089f9807bf8e135c1)](https://www.codacy.com/manual/alexpetrescu1996/csharp-coding-playground?utm_source=github.com&utm_medium=referral&utm_content=alexpetrescu/csharp-coding-playground&utm_campaign=Badge_Coverage)
 ## Data Structures 
 ### ResizeableArray   
 - [x] Automatically resizing array
