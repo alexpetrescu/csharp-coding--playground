@@ -26,8 +26,9 @@ jobs:
     - name: Test
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../../coverage/lcov.info
       working-directory: src/csharp-coding-playground.unit-tests
-    - name: Coveralls GitHub Action
-      uses: coverallsapp/github-action@master
+    - name: Code Coverage
+      uses: codacy/codacy-coverage-reporter-action@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        coverage-reports: ./coverage/coverage.lcov
 
