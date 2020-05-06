@@ -162,7 +162,10 @@ namespace csharp_coding_playground.DataStructures
         {
             for (int i = 0; i < Length; i++)
             {
-                if (item.Equals(data[i])) return i;
+                if (item.Equals(data[i]))
+                {
+                    return i;
+                }
             }
 
             return -1;

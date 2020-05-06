@@ -64,7 +64,10 @@ namespace csharp_coding_playground.DataStructures
 
             for (int i = 0; i < list.Length; i++)
             {
-                if (list.ElementAt(i).Key.Equals(key)) return true;
+                if (list.ElementAt(i).Key.Equals(key))
+                {
+                    return true;
+                }
             }
 
             return false;

@@ -22,7 +22,7 @@ namespace csharp_coding_playground.Infrastructure
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return Key.GetHashCode();
         }
     }
 }

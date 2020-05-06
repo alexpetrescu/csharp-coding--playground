@@ -66,7 +66,7 @@ namespace csharp_coding_playground.DataStructures
         {
             if (node == null)
             {
-                return new BinarySearchTreeNode<T>() { Value = value };
+                return new BinarySearchTreeNode<T> { Value = value };
             }
 
             var check = node.Value.CompareTo(value);
@@ -138,7 +138,11 @@ namespace csharp_coding_playground.DataStructures
         public void Remove(T value)
         {
             (var parent, var node) = Search(value, null, root);
-            if (node != null) Length--;
+            if (node != null)
+            {
+                Length--;
+            }
+
             Remove(parent, node);
         }
 
@@ -161,7 +165,10 @@ namespace csharp_coding_playground.DataStructures
             }
 
             (_, var successor) = Min(node, node.Right);
-            if (successor == null) return node.Value;
+            if (successor == null)
+            {
+                return node.Value;
+            }
 
             return successor.Value;
         }
@@ -172,7 +179,10 @@ namespace csharp_coding_playground.DataStructures
         /// <param name="value"></param>
         private void Remove(BinarySearchTreeNode<T> parent, BinarySearchTreeNode<T> node)
         {
-            if (node == null) return;
+            if (node == null)
+            {
+                return;
+            }
 
             if (node.Left == null && node.Right == null)
             {
@@ -182,8 +192,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = null;
-                    if (parent.Right == node) parent.Right = null;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = null;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = null;
+                    }
                 }
 
                 return;
@@ -197,8 +214,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = node.Right;
-                    if (parent.Right == node) parent.Right = node.Right;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = node.Right;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = node.Right;
+                    }
                 }
 
                 return;
@@ -212,8 +236,15 @@ namespace csharp_coding_playground.DataStructures
                 }
                 else
                 {
-                    if (parent.Left == node) parent.Left = node.Left;
-                    if (parent.Right == node) parent.Right = node.Left;
+                    if (parent.Left == node)
+                    {
+                        parent.Left = node.Left;
+                    }
+
+                    if (parent.Right == node)
+                    {
+                        parent.Right = node.Left;
+                    }
                 }
 
                 return;
@@ -240,7 +271,6 @@ namespace csharp_coding_playground.DataStructures
         public T Min()
         {
             (_, var min) = Min(null, root);
-
             if (min == null)
             {
                 return default;
@@ -256,7 +286,6 @@ namespace csharp_coding_playground.DataStructures
         public T Max()
         {
             (_, var max) = Max(null, root);
-
             if (max == null)
             {
                 return default;
@@ -380,7 +409,10 @@ namespace csharp_coding_playground.DataStructures
         /// <param name="array"></param>
         private void DFSInOrder(BinarySearchTreeNode<T> node, ResizeableArray<T> array)
         {
-            if (node == null) return;
+            if (node == null)
+            {
+                return;
+            }
 
             DFSInOrder(node.Left, array);
             array.Add(node.Value);
@@ -394,7 +426,10 @@ namespace csharp_coding_playground.DataStructures
         /// <param name="array"></param>
         private void DFSPreOrder(BinarySearchTreeNode<T> node, ResizeableArray<T> array)
         {
-            if (node == null) return;
+            if (node == null)
+            {
+                return;
+            }
 
             array.Add(node.Value);
             DFSPreOrder(node.Left, array);
@@ -408,7 +443,10 @@ namespace csharp_coding_playground.DataStructures
         /// <param name="array"></param>
         private void DFSPostOrder(BinarySearchTreeNode<T> node, ResizeableArray<T> array)
         {
-            if (node == null) return;
+            if (node == null)
+            {
+                return;
+            }
 
             DFSPostOrder(node.Left, array);
             DFSPostOrder(node.Right, array);
