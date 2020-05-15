@@ -14,12 +14,12 @@
 -   [x] Capacity - Returns the number of elements that the array can hold.
 -   [x] IsEmpty() - Returns true if the array is empty; false otherwise.
 -   [x] ElementAt(int) - Returns the element at the given index.
--   [x] Add(T) - Adds the element at the end of array.
+-   [x] Add(T) - Adds the element at the end of the array.
 -   [x] Insert(int, T) - Inserts the element at the given index.
 -   [x] Prepend(T) - Adds an element at the beginning of the array.
 -   [x] Pop() - Removes and returns the last element of the array.
 -   [x] RemoveAt(int) - Removes the element at the given index of the array.
--   [x] Remove(T) - Removes all the occurences of the given value from the linked list.
+-   [x] Remove(T) - Removes all the occurrences of the given value from the linked list.
 -   [x] Find(T) - Returns the index of the first element that is equal with the provided value; -1 if there is no match.
 -   [x] Set(int, T) - Updates the value of the element at the given index.
 
@@ -39,8 +39,8 @@
 -   [x] Set(int, T) - Updates the value of the element at the given index of the linked list.
 -   [x] Insert(int, T) - Inserts the element at the given index of the linked list.
 -   [x] RemoveAt(int) - Removes the element at the given index of the linked list.
--   [x] Remove(T) - Removes all the occurences of the given value from the linked list.
--   [x] NthValueFromEnd(int) - Returns the value of the node at nth position from the end of the linked list.
+-   [x] Remove(T) - Removes all the occurrences of the given value from the linked list.
+-   [x] NthValueFromEnd(int) - Returns the value of the node at the nth position from the end of the linked list.
 -   [x] Reverse() - Reverses the linked list.
 
 ### Stack
@@ -82,7 +82,7 @@
 
 ### Binary Search
 
--   Performs search on a sorted array for a given value.
+-   Performs a search on a sorted array for a given value.
 
 ### Merge Sort
 
